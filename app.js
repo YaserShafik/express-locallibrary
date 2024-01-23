@@ -37,9 +37,6 @@ app.use(
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 
-const usr = "contactoyaser";
-const pass = "SquattyDaddy2001"
-
 const dev_db_url =
   `mongodb+srv://${usr}:${pass}@cluster0.ibpusny.mongodb.net/local_library?retryWrites=true&w=majority`;
 const mongoDB = process.env.MONGODB_URI || dev_db_url;
