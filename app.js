@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const nconf = require('nconf');
 
 
 const indexRouter = require('./routes/index');
@@ -15,6 +16,14 @@ const helmet = require("helmet");
 
 
 var app = express();
+
+// Ultimo cambio integrar nconf
+
+nconf.env(); // Cargar variables de entorno
+nconf.file({ file: 'config.json' }); // Cargar configuración desde archivo
+
+const port = nconf.get('PORT') || 3000; // Prioridad a variable de entorno
+const dbHost = nconf.get('db:host'); // Obtener valor del archivo de configuración
 
 // Set up rate limiter: maximum of twenty requests per minute
 const RateLimit = require("express-rate-limit");
